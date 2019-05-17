@@ -1,6 +1,5 @@
 import UIKit
-// Info Players
-
+// Create array with all the players
 var players: [[String: String]] = [
     ["Name": "Joe Smith", "Height": "42", "Experience": "Yes", "Guardian": "Jim and Jan Smith"],
     ["Name": "Jill Tarner", "Height": "36", "Experience": "Yes", "Guardian": "Clara Tanner"],
@@ -21,72 +20,65 @@ var players: [[String: String]] = [
     ["Name": "Les Clay", "Height": "42", "Experience": "Yes", "Guardian": "Wynonna Brown"],
     ["Name": "Herschel Krustofski", "Height": "45", "Experience": "Yes", "Guardian": "Hyman and Rachel Krustofski"]
 ]
-// Separate Players
 
-var experiencePlayers: [[String: String]] = []
-var inexperiencePlayers: [[String: String]] = []
-
-// Teams
-
+// Array teams
+var experienceTeam: [[String: String]] = []
+var inexperienceTeam: [[String: String]] = []
 var teamDragons: [[String: String]] = []
 var teamSharks: [[String: String]] = []
 var teamRaptors: [[String: String]] = []
+
+// Array letter
 var letter: [[String: String]] = []
 
-// Separate players with experience and not experience
-func league() {
-    for theLeague in players {
-        if theLeague["Experience"] == "Yes" {
-            experiencePlayers.append(theLeague)
+
+// Players into teams of Experence and Inexperience
+    for player in players {
+        if player["Experience"] == "Yes" {
+            experienceTeam.append(player)
         }else {
-            inexperiencePlayers.append(theLeague)
+            inexperienceTeam.append(player)
         }
     }
-}
-league()
 
-// Separate players with experience between teams
-func experienceTeam() {
-    for experience in experiencePlayers {
-        if teamDragons.count <= teamSharks.count && teamSharks.count <= teamRaptors.count && teamRaptors.count <= teamDragons.count {
-            teamDragons.append(experience)
+// Experience players in each of the three teams
+    for player in experienceTeam {
+        if teamDragons.count <= teamSharks.count && teamSharks.count <= teamRaptors.count && teamRaptors.count <= teamSharks.count {
+            teamDragons.append(player)
         }else if teamSharks.count <= teamRaptors.count && teamRaptors.count <= teamDragons.count && teamDragons.count <= teamRaptors.count{
-            teamSharks.append(experience)
+            teamSharks.append(player)
         }else {
-            teamRaptors.append(experience)
+            teamRaptors.append(player)
         }
     }
-}
-experienceTeam()
 
-// Separate players without experience between teams
-func inexperienceTeam() {
-    for inexperience in inexperiencePlayers {
-        if teamDragons.count <= teamSharks.count && teamSharks.count <= teamSharks.count && teamSharks.count <= teamDragons.count {
-            teamDragons.append(inexperience)
+// Inexperience players in each of the three teams
+    for player in inexperienceTeam {
+        if teamDragons.count <= teamSharks.count && teamSharks.count <= teamRaptors.count && teamRaptors.count <= teamSharks.count {
+            teamDragons.append(player)
         }else if teamSharks.count <= teamRaptors.count && teamRaptors.count <= teamDragons.count && teamDragons.count <= teamRaptors.count {
-            teamSharks.append(inexperience)
+            teamSharks.append(player)
         }else{
-            teamRaptors.append(inexperience)
+            teamRaptors.append(player)
         }
     }
-}
-inexperienceTeam()
 
-// Letter for the guardians
-for letterDragon in teamDragons {
-    letter.append([letterDragon["Name"]!: "Hello! \(letterDragon["Guardian"]!), \(letterDragon["Name"]!) has first practice Dragons - March 17, 1pm"])
-    print(letter)
-}
-
-for letterSharks in teamSharks {
-    letter.append([letterSharks["Name"]!: "Hello! \(letterSharks["Guardian"]!), \(letterSharks["Name"]!) has first practice Sharks - March 17, 3pm"])
-    print(letter)
+// Create the letters for each team
+for player in teamDragons {
+    letter.append([player["Name"]! : "Hi \(player["Guardian"]!), \(player["Name"]!) First practice with Team Dragon on March 17th, 1PM \(player["Name"]!) on the first day of practice"])
+    
+    print("Hi \(player["Guardian"]!), \(player["Name"]!) First practice with Team Dragon on March 17th, 1PM \(player["Name"]!) on the first day of practice")
 }
 
-for letterRaptors in teamRaptors {
-    letter.append([letterRaptors["Name"]!: "Hello! \(letterRaptors["Guardian"]!), \(letterRaptors["Name"]!) has first practice Raptors - March 18, 1pm"])
-    print(letter)
+for player in teamSharks {
+    letter.append([player["Name"]! : "Hi \(player["Guardian"]!), \(player["Name"]!) First practice with Team Shark on March 17, 3pm \(player["Name"]!) on the first day of practice"])
+    
+    print("Hi \(player["Guardian"]!), \(player["Name"]!) First practice with Team Shark on March 17, 3pm \(player["Name"]!) on the first day of practice")
 }
 
+for player in teamRaptors {
+    letter.append([player["Name"]! : "Hi \(player["Guardian"]!), \(player["Name"]!) First practice with Team Raptor on March 18, 1pm \(player["Name"]!) on the first day of practice"])
+    
+    print("Hi \(player["Guardian"]!), \(player["Name"]!) First practice with Team Raptor on March 18, 1pm \(player["Name"]!) on the first day of practice")
+}
 
